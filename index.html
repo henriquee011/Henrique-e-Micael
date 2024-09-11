@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo de Perguntas e Respostas</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Adicionando alguns estilos básicos para garantir a visibilidade das perguntas */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        #containerQuiz {
+            max-width: 600px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .pergunta {
+            margin-bottom: 20px;
+        }
+        .pergunta h3 {
+            margin: 0 0 10px;
+        }
+        .resposta-button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            display: block;
+            margin-bottom: 5px;
+            width: 100%;
+            text-align: left;
+        }
+        .resposta-button:hover {
+            background-color: #0056b3;
+        }
+        .resposta-button.selected {
+            background-color: #0056b3;
+        }
+        .resposta-button.disabled {
+            background-color: #6c757d;
+            cursor: not-allowed;
+        }
+        button:disabled {
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+    <div id="containerQuiz">
+        <h1>Quiz de Perguntas e Respostas</h1>
+        <form id="quizForm">
+            <!-- Pergunta 1 -->
+            <div class="pergunta">
+                <h3>1. Qual é o nome do relógio do Ben 10?</h3>
+                <button type="button" class="resposta-button" data-pergunta="pergunta1" data-value="0">Omnitrix</button>
+                <button type="button" class="resposta-button" data-pergunta="pergunta1" data-value="1">Carnitrix</button>
+                <button type="button" class="resposta-button" data-pergunta="pergunta1" data-value="2">Omnitrix Omniverse</button>
+                <button type="button" class="resposta-button" data-pergunta="pergunta1" data-value="3">SuperOmnitrix</button>
+            </div>
+
+            <!-- Pergunta 2 -->
+            <div class="pergunta">
+                <h3>2. Qual era o nome do líder responsável pela morte de milhões de judeus na Alemanha nazista?</h3>
+                <button type="button" class="resposta-button" data-pergunta="pergunta2" data-value="0">Stalin</button>
+                <button type="button" class="resposta-button" data-pergunta="pergunta2" data-value="1">Che Guevara</button>
+                <button type="button" class="resposta-button" data-pergunta="pergunta2" data-value="2">Adolf Hitler</button>
+                <button type="button" class="resposta-button" data-pergunta="pergunta2" data-value="3">Nikolás Maduro</button>
+            </div>
+
+            <!-- Pergunta 3 -->
+            <div class="pergunta">
+                <h3>3. Qual é o país mais populoso do mundo?</h3>
+                <button type="button" class="resposta-button" data-pergunta="pergunta3" data-value="0">China</button>
+                <button type="button" class="resposta-button" data-pergunta="pergunta3" data-value="1">Estados Unidos</button>
+                <button type="button" class="resposta-button" data-pergunta="pergunta3" data-value="2">Egito</button>
+                <button type="button" class="resposta-button" data-pergunta="pergunta3" data-value="3">Índia</button>
+            </div>
+
+            <!-- Pergunta 4 -->
+            <div class="pergunta">
+                <h3>4. Qual é o sistema operacional mais popular do mundo?</h3>
+                <button type="button" class="resposta-button" data-pergunta="pergunta4" data-value="0">Android</button>
+                <button type="button" class="resposta-button" data-pergunta="pergunta4" data-value="1">IOS</button>
+                <button type="button" class="resposta-button" data-pergunta="pergunta4" data-value="2">Linux</button>
+                <button type="button" class="resposta-button" data-pergunta="pergunta4" data-value="3">Windows</button>
+            </div>
+
+            <!-- Pergunta 5 -->
+            <div class="pergunta">
+                <h3>5. Qual é a marca de celular mais vendida atualmente?</h3>
+                <button type="button" class="resposta-button" data-pergunta="pergunta5" data-value="0">Samsung</button>
+                <button type="button" class="resposta-button" data-pergunta="pergunta5" data-value="1">Motorola</button>
+                <button type="button" class="resposta-button" data-pergunta="pergunta5" data-value="2">Apple</button>
+                <button type="button" class="resposta-button" data-pergunta="pergunta5" data-value="3">Xiaomi</button>
+            </div>
+
+            <!-- Pergunta 6 -->
+            <div class="pergunta">
+                <h3>6. Em que ano o homem chegou à Lua pela primeira vez?</h3>
+                <button type="button" class="resposta-button" data-pergunta="pergunta6" data-value="0">1965</button>
+                <button type="button" class="resposta-button" data-pergunta="pergunta6" data-value="1">1967</button>
+                <button type="button" class="resposta-button" data-pergunta="pergunta6" data-value="2">1969</button>
+                <button type="button" class="resposta-button" data-pergunta="pergunta6" data-value="3">1971</button>
+            </div>
+
+            <!-- Pergunta 7 -->
+            <div class="pergunta">
+                <h3>7. Qual é a capital do Brasil?</h3>
+                <button type="button" class="resposta-button" data-pergunta="pergunta7" data-value="0">Pequim</button>
+                <button type="button" class="resposta-button" data-pergunta="pergunta7" data-value="1">Brasília</button>
+                <button type="button" class="resposta-button" data-pergunta="pergunta7" data-value="2">Rio de Janeiro</button>
+                <button type="button" class="resposta-button" data-pergunta="pergunta7" data-value="3">Bangkok</button>
+            </div>
+
+            <!-- Pergunta 8 -->
+            <div class="pergunta">
+                <h3>8. Qual é o apelido do ex-presidente do Brasil "Michel Temer"?</h3>
+                <button type="button" class="resposta-button" data-pergunta="pergunta8" data-value="0">Caipira</button>
+                <button type="button" class="resposta-button" data-pergunta="pergunta8" data-value="1">Vampiro</button>
+                <button type="button" class="resposta-button" data-pergunta="pergunta8" data-value="2">Desdentado</button>
+                <button type="button" class="resposta-button" data-pergunta="pergunta8" data-value="3">Zumbi</button>
+            </div>
+
+            <!-- Pergunta 9 -->
+            <div class="pergunta">
+                <h3>9. Qual é o aplicativo que foi banido recentemente no Brasil?</h3>
+                <button type="button" class="resposta-button" data-pergunta="pergunta9" data-value="0">Instagram</button>
+                <button type="button" class="resposta-button" data-pergunta="pergunta9" data-value="1">Whatsapp</button>
+                <button type="button" class="resposta-button" data-pergunta="pergunta9" data-value="2">X</button>
+                <button type="button" class="resposta-button" data-pergunta="pergunta9" data-value="3">Discord</button>
+            </div>
+
+            <!-- Pergunta 10 -->
+            <div class="pergunta">
+                <h3>10. Quem criou o computador?</h3>
+                <button type="button" class="resposta-button" data-pergunta="pergunta10" data-value="0">Michelangelo</button>
+                <button type="button" class="resposta-button" data-pergunta="pergunta10" data-value="1">Charles Babbage</button>
+                <button type="button" class="resposta-button" data-pergunta="pergunta10" data-value="2">Bill Gates</button>
+                <button type="button" class="resposta-button" data-pergunta="pergunta10" data-value="3">Steve Jobs</button>
+            </div>
+        </form>
+        <button id="submitButton" type="button">Enviar Respostas</button>
+        <p id="result"></p>
+    </div>
+
+    <script>
+        // Respostas corretas para cada pergunta
+        const respostasCorretas = {
+            pergunta1: 0, // Omnitrix
+            pergunta2: 2, // Adolf Hitler
+            pergunta3: 3, // Índia
+            pergunta4: 0, // Android
+            pergunta5: 0, // Samsung
+            pergunta6: 2, // 1969
+            pergunta7: 1, // Brasília
+            pergunta8: 1, // Vampiro
+            pergunta9: 2, // X
+            pergunta10: 1, // Charles Babbage
+        };
+
+        const buttons = document.querySelectorAll('.resposta-button');
+        const submitButton = document.getElementById('submitButton');
+        const result = document.getElementById('result');
+
+        buttons.forEach(button => {
+            button.addEventListener('click', function() {
+                const pergunta = this.getAttribute('data-pergunta');
+                const value = parseInt(this.getAttribute('data-value'), 10);
+
+                // Desmarcar todas as respostas da mesma pergunta
+                document.querySelectorAll(`button[data-pergunta="${pergunta}"]`).forEach(btn => {
+                    btn.classList.remove('selected');
+                });
+
+                // Marcar a resposta selecionada
+                this.classList.add('selected');
+            });
+        });
+
+        submitButton.addEventListener('click', function() {
+            let score = 0;
+            let totalQuestions = Object.keys(respostasCorretas).length;
+            let todasRespondidas = true;
+
+            Object.keys(respostasCorretas).forEach(pergunta => {
+                const selectedButton = document.querySelector(`button[data-pergunta="${pergunta}"].selected`);
+                if (selectedButton) {
+                    const selectedValue = parseInt(selectedButton.getAttribute('data-value'), 10);
+                    if (selectedValue === respostasCorretas[pergunta]) {
+                        score++;
+                    }
+                } else {
+                    todasRespondidas = false; // Marca que nem todas as perguntas foram respondidas
+                }
+            });
+
+            if (todasRespondidas) {
+                result.textContent = `Você acertou ${score} de ${totalQuestions} perguntas.`;
+            } else {
+                result.textContent = `Por favor, responda todas as perguntas antes de enviar.`;
+            }
+        });
+    </script>
+</body>
+</html>
+
